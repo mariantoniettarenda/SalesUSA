@@ -466,7 +466,7 @@
       <div class="flag-badge">🇺🇸</div>
       <div>
         <div class="header-title">Magic Motorsport · USA &amp; Canada</div>
-        <div class="header-subtitle">Sales Analytics Hub — Commercial Team</div>
+        <div class="header-subtitle">Sales Analytics Hub </div>
       </div>
       <div class="header-right">
         <div class="pulse-dot"></div>
@@ -484,7 +484,7 @@
       <p>
         Your live command centre for distributor performance, subscription renewals,
         helpdesk KPIs, and market intelligence across the North American territory.
-        Reports refresh automatically every morning via n8n.
+        Reports refresh automatically every morning.
       </p>
     </div>
   </div>
@@ -510,12 +510,12 @@
         </a>
 
         <!-- Subscription Renewals -->
-        <a class="card live" href="report-abbonamenti.html">
+        <a class="card soon" href="#">
           <div class="card-icon">🔄</div>
           <div class="card-title">Subscription Renewals</div>
-          <div class="card-desc">Upcoming expirations, renewal rates, churn risk scoring, and urgency segmentation by distributor tier.</div>
+          <div class="card-desc">Upcoming expirations and renewal rates</div>
           <div class="card-footer">
-            <span class="badge badge-live">● Live</span>
+            <span class="badge badge-soon">Coming soon</span>
             <span class="card-arrow">→</span>
           </div>
         </a>
@@ -526,7 +526,7 @@
           <div class="card-title">Dyno Installation Map</div>
           <div class="card-desc">Geographic view of active Dyno installations across the USA and Canada, with unit counts and status by state/province.</div>
           <div class="card-footer">
-            <span class="badge badge-live">● Live</span>
+            <span class="badge badge-soon">Coming soon</span>
             <span class="card-arrow">→</span>
           </div>
         </a>
@@ -535,7 +535,7 @@
         <a class="card soon" href="#">
           <div class="card-icon">📈</div>
           <div class="card-title">Sales YTD</div>
-          <div class="card-desc">Year-to-date revenue, units sold, and distributor ranking for the US and Canadian markets.</div>
+          <div class="card-desc"> Revenue, units sold, and commercial analysis ranking for the US and Canadian markets.</div>
           <div class="card-footer">
             <span class="badge badge-soon">Coming soon</span>
             <span class="card-arrow">→</span>
@@ -546,18 +546,7 @@
         <a class="card soon" href="#">
           <div class="card-icon">🛒</div>
           <div class="card-title">Abandoned Carts</div>
-          <div class="card-desc">Recovery analytics for cart abandonments in the US/CA e-commerce channel, segmented by product and value band.</div>
-          <div class="card-footer">
-            <span class="badge badge-soon">Coming soon</span>
-            <span class="card-arrow">→</span>
-          </div>
-        </a>
-
-        <!-- Competitor Radar -->
-        <a class="card soon" href="#">
-          <div class="card-icon">🎯</div>
-          <div class="card-title">Competitor Radar</div>
-          <div class="card-desc">Pricing benchmarks, new product releases, and market-share movements from key North American competitors.</div>
+          <div class="card-desc">Recovery analytics for cart abandonments in the US/CA e-commerce channel.</div>
           <div class="card-footer">
             <span class="badge badge-soon">Coming soon</span>
             <span class="card-arrow">→</span>
@@ -568,17 +557,17 @@
         <a class="card soon" href="#">
           <div class="card-icon">🔇</div>
           <div class="card-title">Silent Clients</div>
-          <div class="card-desc">Distributors with no activity in the last 90 days — re-engagement list with last order date and account value.</div>
+          <div class="card-desc">Clients expired with no activity in the last 90 days — re-engagement list with last order date and account value.</div>
           <div class="card-footer">
             <span class="badge badge-soon">Coming soon</span>
             <span class="card-arrow">→</span>
           </div>
         </a>
 
-        <!-- Distributor Stock -->
+        <!-- Your Stock -->
         <a class="card soon" href="#">
           <div class="card-icon">📦</div>
-          <div class="card-title">Distributor Stock</div>
+          <div class="card-title">Your HD / SW Stock</div>
           <div class="card-desc">Real-time inventory levels at key US and Canadian distributor warehouses, with reorder alerts.</div>
           <div class="card-footer">
             <span class="badge badge-soon">Coming soon</span>
@@ -587,17 +576,6 @@
         </a>
 
       </div>
-    </div>
-  </div>
-
-  <!-- ── AUTOMATION TICKER ── -->
-  <div class="ticker-section">
-    <div class="ticker-wrap">
-      <span class="ticker-label">⚡ Automation</span>
-      <div class="ticker-divider"></div>
-      <span class="ticker-text">
-        <strong>n8n pipeline</strong> pulls data from Gmail attachments &amp; Google Drive · pushes encrypted reports Pages every morning at <strong>07:00</strong> · StatiCrypt protects all files with shared session token
-      </span>
     </div>
   </div>
 
@@ -621,24 +599,24 @@
         <tbody>
           <tr>
             <td><strong>Helpdesk USA/CA</strong></td>
-            <td>Gmail Attachment <em>(Helpdesk Extract)</em></td>
-            <td>Daily 07:00</td>
+            <td>Helpdesk Script <em></em></td>
+            <td>Daily 08:00</td>
             <td><span class="status-dot dot-green"></span>Active</td>
             <td id="run-helpdesk">—</td>
           </tr>
           <tr>
             <td><strong>Subscription Renewals</strong></td>
-            <td>Google Drive <em>(2025–2026.xlsx)</em></td>
-            <td>Daily 07:00</td>
-            <td><span class="status-dot dot-green"></span>Active</td>
-            <td id="run-abbonamenti">—</td>
+            <td>Helpdesk <em></em></td>
+            <td>Every 1st and 15th of the month</td>
+            <td><span class="status-dot dot-gray"></span>Planned</td>
+           <td>—</td>
           </tr>
           <tr>
             <td><strong>Dyno Map</strong></td>
-            <td>Google Drive <em>(warehouse file)</em></td>
-            <td>Daily 07:00</td>
-            <td><span class="status-dot dot-amber"></span>Demo data</td>
-            <td id="run-dyno">—</td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="status-dot dot-gray"></span>Planned</td>
+            <td>—</td>
           </tr>
           <tr>
             <td><strong>Sales YTD</strong></td>
