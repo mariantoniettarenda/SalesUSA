@@ -1,1 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magic Motorsport · USA & Canada Sales Hub</title>
 
+  <!-- Fonts: Caveat (handwritten) + Inter (body) — same pairing as Iberica -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── DESIGN TOKENS ──────────────────────────────────────────────
+       Palette: USA flag colours — navy #002868, red #BF0A30, white
+       Accent: bright red  |  Neutral notebook: warm off-white + lines
+       Same notebook-theme structure as SalesIberica (Spanish flag)
+    ────────────────────────────────────────────────────────────────── */
+    :root {
+      --navy:      #002868;
+      --red:       #BF0A30;
+      --red-light: #e8002e;
+      --white:     #FFFFFF;
+      --cream:     #FAFAF7;
+      --line:      #D9E4F0;          /* notebook ruled lines – blue tint */
+      --ink:       #1A1A2E;
+      --ink-soft:  #4A5568;
+      --card-bg:   #FFFFFF;
+      --shadow:    rgba(0,40,104,.10);
+      --badge-live:#0A7A3E;
+      --badge-soon:#B45309;
+      --stripe-odd:#F0F4FF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      /* Notebook ruled lines in background */
+      background-image:
+        repeating-linear-gradient(
+          transparent,
+          transparent 27px,
+          var(--line) 27px,
+          var(--line) 28px
+        );
+      background-attachment: fixed;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────────────── */
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+
+    .header-stripe {
+      height: 6px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--red)    0px,
+        var(--red)    40px,
+        var(--white)  40px,
+        var(--white)  50px,
+        var(--navy)   50px,
+        var(--navy)   90px
+      );
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .flag-badge {
+      font-size: 2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .header-title {
+      font-family: 'Caveat', cursive;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .5px;
+      line-height: 1.1;
+    }
+
+    .header-subtitle {
+      font-size: .75rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.65);
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .header-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pulse-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,.5);
+      animation: pulse 2.2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0   rgba(34,197,94,.5); }
+      70%  { box-shadow: 0 0 0 8px rgba(34,197,94,.0); }
+      100% { box-shadow: 0 0 0 0   rgba(34,197,94,.0); }
+    }
+
+    .live-label {
+      font-size: .68rem;
+      font-weight: 600;
+      color: #22c55e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .last-update {
+      font-size: .68rem;
+      color: rgba(255,255,255,.5);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding: 0 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .hero-margin {
+      width: 48px;
+      flex-shrink: 0;
+      /* Red margin line, like a paper notebook */
+      border-right: 2.5px solid var(--red);
+      min-height: 80px;
+    }
+
+    .hero-text h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+    }
+
+    .hero-text h1 span {
+      color: var(--red);
+    }
+
+    .hero-text p {
+      margin-top: 10px;
+      font-size: .9rem;
+      color: var(--ink-soft);
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    /* ─── SECTION TITLE ──────────────────────────────────────────── */
+    .section {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding: 0 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-margin {
+      width: 48px;
+      flex-shrink: 0;
+      border-right: 2.5px solid var(--red);
+    }
+
+    .section-title {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* ─── CARDS GRID ─────────────────────────────────────────────── */
+    .cards-wrap {
+      padding-left: 60px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* ─── CARD ───────────────────────────────────────────────────── */
+    .card {
+      background: var(--card-bg);
+      border: 1.5px solid #DCE5F0;
+      border-radius: 10px;
+      padding: 22px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 2px 8px var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px var(--shadow);
+      border-color: var(--navy);
+    }
+
+    .card.live:hover { border-color: var(--navy); }
+    .card.soon       { opacity: .72; cursor: default; }
+    .card.soon:hover { transform: none; box-shadow: 0 2px 8px var(--shadow); border-color: #DCE5F0; }
+
+    /* Top accent bar */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--navy);
+      border-radius: 10px 10px 0 0;
+    }
+
+    .card.live::before  { background: var(--navy); }
+    .card.soon::before  { background: #94a3b8; }
+
+    .card-icon {
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+
+    .card-title {
+      font-family: 'Caveat', cursive;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: .78rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .badge {
+      font-size: .62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    .badge-live {
+      background: #DCFCE7;
+      color: var(--badge-live);
+    }
+
+    .badge-soon {
+      background: #FEF3C7;
+      color: var(--badge-soon);
+    }
+
+    .card-arrow {
+      font-size: .85rem;
+      color: var(--navy);
+      opacity: .5;
+      transition: opacity .15s, transform .15s;
+    }
+
+    .card:hover .card-arrow {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    .card.soon .card-arrow { display: none; }
+
+    /* ─── UPDATE TICKER ──────────────────────────────────────────── */
+    .ticker-section {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding: 0 32px;
+    }
+
+    .ticker-wrap {
+      margin-left: 60px;
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .ticker-label {
+      font-size: .68rem;
+      font-weight: 700;
+      color: var(--red-light);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .ticker-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,.2);
+      flex-shrink: 0;
+    }
+
+    .ticker-text {
+      font-size: .78rem;
+      color: rgba(255,255,255,.8);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ticker-text strong { color: #fff; }
+
+    /* ─── PIPELINE TABLE ─────────────────────────────────────────── */
+    .pipeline-table {
+      margin-left: 60px;
+      width: calc(100% - 60px);
+      border-collapse: collapse;
+      font-size: .8rem;
+    }
+
+    .pipeline-table th {
+      text-align: left;
+      font-size: .65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--ink-soft);
+      padding: 0 10px 8px;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    .pipeline-table td {
+      padding: 9px 10px;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pipeline-table tr:nth-child(odd) td { background: var(--stripe-odd); }
+
+    .status-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .dot-green  { background: #22c55e; }
+    .dot-amber  { background: #f59e0b; }
+    .dot-gray   { background: #94a3b8; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      max-width: 1200px;
+      margin: 56px auto 0;
+      padding: 0 32px 40px;
+    }
+
+    .footer-inner {
+      margin-left: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1.5px solid var(--line);
+      padding-top: 18px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .footer-meta {
+      font-size: .72rem;
+      color: var(--ink-soft);
+    }
+
+    .footer-meta a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-flags {
+      font-size: 1.1rem;
+      letter-spacing: 4px;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .header-inner  { padding: 12px 16px; }
+      .hero, .section, .ticker-section, footer { padding-left: 16px; padding-right: 16px; }
+      .hero-margin, .section-margin { width: 28px; }
+      .cards-wrap, .ticker-wrap, .pipeline-table, .footer-inner { margin-left: 36px; }
+      .pipeline-table { width: calc(100% - 36px); }
+      .header-title  { font-size: 1.4rem; }
+      .hero-text h1  { font-size: 1.9rem; }
+      .last-update   { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-stripe"></div>
+    <div class="header-inner">
+      <div class="flag-badge">🇺🇸</div>
+      <div>
+        <div class="header-title">Magic Motorsport · USA &amp; Canada</div>
+        <div class="header-subtitle">Sales Analytics Hub — Commercial Team</div>
+      </div>
+      <div class="header-right">
+        <div class="pulse-dot"></div>
+        <span class="live-label">Live</span>
+        <span class="last-update" id="lastUpdate">Updating…</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-margin"></div>
+    <div class="hero-text">
+      <h1>Sales Intelligence<br /><span>USA &amp; Canada</span> 🏁</h1>
+      <p>
+        Your live command centre for distributor performance, subscription renewals,
+        helpdesk KPIs, and market intelligence across the North American territory.
+        Reports refresh automatically every morning via n8n.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── LIVE REPORTS ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-margin" style="min-height:28px;"></div>
+      <div class="section-title">📊 Live Reports</div>
+    </div>
+    <div class="cards-wrap">
+      <div class="cards-grid">
+
+        <!-- Helpdesk USA/CA -->
+        <a class="card live" href="report-helpdesk-usca.html">
+          <div class="card-icon">🎧</div>
+          <div class="card-title">Helpdesk USA &amp; CA</div>
+          <div class="card-desc">Listo of HD Customers registred in US and Canada.</div>
+          <div class="card-footer">
+            <span class="badge badge-live">● Live</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Subscription Renewals -->
+        <a class="card live" href="report-abbonamenti.html">
+          <div class="card-icon">🔄</div>
+          <div class="card-title">Subscription Renewals</div>
+          <div class="card-desc">Upcoming expirations, renewal rates, churn risk scoring, and urgency segmentation by distributor tier.</div>
+          <div class="card-footer">
+            <span class="badge badge-live">● Live</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Dyno Map -->
+        <a class="card soon" href="#">
+          <div class="card-icon">🗺️</div>
+          <div class="card-title">Dyno Installation Map</div>
+          <div class="card-desc">Geographic view of active Dyno installations across the USA and Canada, with unit counts and status by state/province.</div>
+          <div class="card-footer">
+            <span class="badge badge-live">● Live</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- YTD Sales -->
+        <a class="card soon" href="#">
+          <div class="card-icon">📈</div>
+          <div class="card-title">Sales YTD</div>
+          <div class="card-desc">Year-to-date revenue, units sold, and distributor ranking for the US and Canadian markets.</div>
+          <div class="card-footer">
+            <span class="badge badge-soon">Coming soon</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Abandoned Carts -->
+        <a class="card soon" href="#">
+          <div class="card-icon">🛒</div>
+          <div class="card-title">Abandoned Carts</div>
+          <div class="card-desc">Recovery analytics for cart abandonments in the US/CA e-commerce channel, segmented by product and value band.</div>
+          <div class="card-footer">
+            <span class="badge badge-soon">Coming soon</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Competitor Radar -->
+        <a class="card soon" href="#">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">Competitor Radar</div>
+          <div class="card-desc">Pricing benchmarks, new product releases, and market-share movements from key North American competitors.</div>
+          <div class="card-footer">
+            <span class="badge badge-soon">Coming soon</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Silent Clients -->
+        <a class="card soon" href="#">
+          <div class="card-icon">🔇</div>
+          <div class="card-title">Silent Clients</div>
+          <div class="card-desc">Distributors with no activity in the last 90 days — re-engagement list with last order date and account value.</div>
+          <div class="card-footer">
+            <span class="badge badge-soon">Coming soon</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Distributor Stock -->
+        <a class="card soon" href="#">
+          <div class="card-icon">📦</div>
+          <div class="card-title">Distributor Stock</div>
+          <div class="card-desc">Real-time inventory levels at key US and Canadian distributor warehouses, with reorder alerts.</div>
+          <div class="card-footer">
+            <span class="badge badge-soon">Coming soon</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── AUTOMATION TICKER ── -->
+  <div class="ticker-section">
+    <div class="ticker-wrap">
+      <span class="ticker-label">⚡ Automation</span>
+      <div class="ticker-divider"></div>
+      <span class="ticker-text">
+        <strong>n8n pipeline</strong> pulls data from Gmail attachments &amp; Google Drive · pushes encrypted reports Pages every morning at <strong>07:00</strong> · StatiCrypt protects all files with shared session token
+      </span>
+    </div>
+  </div>
+
+  <!-- ── PIPELINE STATUS ── -->
+  <div class="section" style="margin-top: 36px;">
+    <div class="section-header">
+      <div class="section-margin" style="min-height:28px;"></div>
+      <div class="section-title">⚙️ Pipeline Status</div>
+    </div>
+    <div class="cards-wrap">
+      <table class="pipeline-table">
+        <thead>
+          <tr>
+            <th>Report</th>
+            <th>Data Source</th>
+            <th>Frequency</th>
+            <th>Status</th>
+            <th>Last Run</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Helpdesk USA/CA</strong></td>
+            <td>Gmail Attachment <em>(Helpdesk Extract)</em></td>
+            <td>Daily 07:00</td>
+            <td><span class="status-dot dot-green"></span>Active</td>
+            <td id="run-helpdesk">—</td>
+          </tr>
+          <tr>
+            <td><strong>Subscription Renewals</strong></td>
+            <td>Google Drive <em>(2025–2026.xlsx)</em></td>
+            <td>Daily 07:00</td>
+            <td><span class="status-dot dot-green"></span>Active</td>
+            <td id="run-abbonamenti">—</td>
+          </tr>
+          <tr>
+            <td><strong>Dyno Map</strong></td>
+            <td>Google Drive <em>(warehouse file)</em></td>
+            <td>Daily 07:00</td>
+            <td><span class="status-dot dot-amber"></span>Demo data</td>
+            <td id="run-dyno">—</td>
+          </tr>
+          <tr>
+            <td><strong>Sales YTD</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="status-dot dot-gray"></span>Planned</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong>Abandoned Carts</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="status-dot dot-gray"></span>Planned</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><strong>Competitor Radar</strong></td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="status-dot dot-gray"></span>Planned</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Magicmotorsport · Sales Team</div>
+        <div class="footer-meta">
+          Sales Analytics Portal — USA &amp; Canada Branch 
+        </div>
+      </div>
+      <div class="footer-flags">🇺🇸 🇨🇦</div>
+      <div class="footer-meta" style="text-align:right;">
+        Powered by n8n & MagicMary <br />
+        <span id="footerDate"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Live timestamps ──────────────────────────────────────────────
+    const now = new Date();
+    const fmt  = (d) => d.toLocaleString('en-US', {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+    const fmtDate = (d) => d.toLocaleDateString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    document.getElementById('lastUpdate').textContent  = 'Updated: ' + fmt(now);
+    document.getElementById('footerDate').textContent  = fmtDate(now);
+
+    // Simulate last-run times (morning runs)
+    const morning = new Date(now);
+    morning.setHours(7, 0, 0, 0);
+    const runStr = fmt(morning);
+    ['run-helpdesk','run-abbonamenti','run-dyno'].forEach(id => {
+      document.getElementById(id).textContent = runStr;
+    });
+  </script>
+
+</body>
+</html>
